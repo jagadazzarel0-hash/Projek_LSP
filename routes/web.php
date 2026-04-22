@@ -20,6 +20,8 @@ Route::get('/penjualan/reset', function () {
     session()->forget('cart');
     return redirect('/penjualan')->with('success', 'Keranjang dikosongkan');
 });
+Route::resource('produk', ProductController::class);
+Route::get('/produk/{id}/toggle', [ProductController::class, 'toggle']);
     Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/laporan', [LaporanController::class, 'index']);
     Route::get('/kategori', [KategoriController::class, 'index']);

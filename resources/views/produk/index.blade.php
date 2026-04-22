@@ -34,16 +34,22 @@
 
         <!-- TOMBOL -->
         <td>
-            <a href="/produk/{{ $p->id }}/toggle" class="btn btn-warning btn-sm">
-                Toggle
-            </a>
-            <form action="/produk/{{ $p->id }}" method="POST" style="display:inline;">
+    <a href="/produk/{{ $p->id }}/edit" class="btn btn-primary btn-sm">
+        Edit
+    </a>
+
+    <a href="/produk/{{ $p->id }}/toggle" class="btn btn-warning btn-sm">
+        Toggle
+    </a>
+
+    <form action="/produk/{{ $p->id }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')
         <button onclick="return confirm('Yakin hapus produk ini?')" class="btn btn-dark btn-sm">
             Hapus
         </button>
-        </td>
+    </form>
+</td>
 
     </tr>
     @endforeach

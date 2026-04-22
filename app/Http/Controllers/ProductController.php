@@ -49,4 +49,26 @@ class ProductController extends Controller
 
         return redirect('/produk')->with('success', 'Produk berhasil dihapus');
     }
+
+    public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    $kategoris = Kategori::all();
+
+    return view('produk.edit', compact('product', 'kategoris'));
+}
+
+public function update(Request $request, $id)
+{
+    $product = Product::findOrFail($id);
+
+    $product->update([
+        'nama' => $request->nama,
+        'harga' => $request->harga,
+        'stok' => $request->stok,
+        'kategori_id' => $request->kategori_id,
+    ]);
+
+    return redirect('/produk')->with('success', 'Produk berhasil diupdate');
+}
 }
